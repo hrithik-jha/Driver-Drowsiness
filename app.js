@@ -19,7 +19,15 @@ app.listen(port, () => {
     console.log("Connected | App Listening on 27017");
 });
 
+
 // == GET METHODS ==
+
+// Checking is the server is deployed and ready
+app.get('/', (req, res) => {
+    res.json("App Deployed on heroku on port " + port);
+});
+
+
 // Get complete profile of all drivers
 app.get('/getEverything', (req, res) => {
     db.collection(collection)
