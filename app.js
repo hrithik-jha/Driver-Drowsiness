@@ -14,7 +14,8 @@ admin.initializeApp({
 const db = admin.firestore();
 
 // Connection
-app.listen(27017, () => {
+const port = process.env.PORT || 27017;
+app.listen(port, () => {
     console.log("Connected | App Listening on 27017");
 });
 
