@@ -6,8 +6,8 @@ const path = require('path');
 const collection = "driverDB";
 
 const admin = require('firebase-admin');
-// let serviceAccount = require('credentials/driverdrowsiness-10-7d44a96eda05.json');
-let serviceAccount = require(path.join(__dirname, 'credentials/driverdrowsiness-10-7d44a96eda05.json'));
+let serviceAccount = require(path.join(__dirname, 'credentials', 'driverdrowsiness-10-7d44a96eda05.json'));
+// let serviceAccount = require(path.join('credentials/driverdrowsiness-10-7d44a96eda05.json'));
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
 });
