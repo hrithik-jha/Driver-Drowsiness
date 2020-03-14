@@ -1,0 +1,54 @@
+#graph {
+    margin: 25px;
+    padding: 25px;
+}
+
+.breaker {
+    margin-top: 2rem;
+}
+
+#current {
+    font-style: normal;
+    font-size: 24px;
+    width: 55%;
+    display: inline;
+    float: left;
+}
+
+#emergency {
+    font-style: normal;
+    font-size: 20px;
+    border: 1px solid black;
+    display: inline;
+    width: 25%;
+    height: 100%;
+    float: right;
+    padding: 25px 10px;
+}
+
+.display-6 {
+    font-size: x-large;
+}
+
+hr.dark-1 {
+    width: 30%;
+    border-color: #000;
+    float: left;
+}
+
+#DriverName {
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: x-large;
+}
+
+#CurrentState {
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: x-large;
+}
+
+.breaker-horizontal {
+    display: inline;
+    margin-right: 15px;
+}

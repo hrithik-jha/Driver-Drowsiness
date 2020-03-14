@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>
+        Dashboard
+    </title>
+    <link rel="stylesheet" type="text/css"
+          href="../bootstrap-4.4.1-dist/css/bootstrap.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="../css/admin_home.css" />
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+        <a class="navbar-brand mr-auto order-1" href="#">Driver Drowsiness Detector</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+
+    <div class="mx-auto order-0">
+        <a class="mx-auto navbar-brand">Admin Dashboard</a>
+    </div>
+
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../webpages%20to%20be%20added/drivers.html">Drivers</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="activity.html">Activity</a>
+            </li>
+        </ul>
+        <div class="breaker-horizontal"></div>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </div>
+</nav>
+
+<!-- Content -->
+<div class="breaker"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10">
+            <div>
+                <a class="display-6">
+                    Incidents reported this week
+                </a> <br/>
+                <hr class="dark-1">
+            </div>
+            <div id="graph">
+                <img src="../webpages%20to%20be%20added/image.jfif" class="rounded mx-auto d-block" alt="graph not available">
+            </div>
+
+            <div class="breaker-1"></div>
+
+            <div class="my-container">
+                <div id="current" class="text-left">
+                    <u><b>Stats for current week:</b></u>
+                    <br/>
+                    Our calm fear for dogma is to experience others safely.
+                </div>
+                <div id="emergency">
+                    <h4>
+                        <u>Incident Counter:</u>
+                    </h4>
+                    <br/>
+                    <a id="numberIncidents">44</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-1"></div>
+</div>
+
+</body>
+</html>

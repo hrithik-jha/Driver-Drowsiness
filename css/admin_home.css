@@ -1,0 +1,66 @@
+.breaker {
+    margin-top: 2rem;
+}
+
+.breaker-1 {
+    margin-top: 3rem;
+}
+
+#graph {
+    margin: 25px;
+    padding: 25px;
+}
+
+#current {
+    font-style: normal;
+    font-size: 24px;
+    width: 75%;
+    display: inline;
+    float: left;
+}
+
+#emergency {
+    font-style: normal;
+    font-size: 20px;
+    border: 1px solid black;
+    text-align: center;
+    display: inline;
+    width: 25%;
+    height: 100%;
+    float: right;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.display-6 {
+    font-size: x-large;
+}
+
+#numberIncidents {
+    font-weight: bold;
+}
+
+hr.dark {
+    margin-left: 1px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    /*width: 75%;*/
+    height: 8px;
+    border-color: #000;
+}
+
+hr.dark-1 {
+    width: 30%;
+    border-color: #000;
+    float: left;
+}
+
+div.my-container {
+    margin-top: 4rem;
+}
+
+
+.breaker-horizontal {
+    display: inline;
+    margin-right: 15px;
+}
