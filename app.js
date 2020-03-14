@@ -5,6 +5,8 @@ app.use(bodyParser.json());
 const path = require('path');
 const collection = "driverDB";
 
+app.use(express.static(path.join(__dirname, '')));
+
 const admin = require('firebase-admin');
 let serviceAccount = require(path.join(__dirname, 'credentials', 'driverdrowsiness-10-7d44a96eda05.json'));
 // let serviceAccount = require(path.join('credentials/driverdrowsiness-10-7d44a96eda05.json'));
@@ -13,7 +15,8 @@ admin.initializeApp({
 });
 const db = admin.firestore();
 
-// Connection
+
+// Connection to Firestore
 const port = process.env.PORT || 27017;
 app.listen(port, () => {
     console.log("Connected | App Listening on 27017");
@@ -122,4 +125,14 @@ app.put('/addActivity', (req, res) => {
                 message: err
             })
         })
+});
+
+
+// == Fetching Web Pages ==
+app.get('/adminHome', (req, res) => {
+    res.sendFile(path.join(__dirname, 'html/admin_home.html'));
+});
+
+app.get('/driverActivity', (req, res) => {
+    res.sendFile(path.join(__dirname, 'html/activity.html'));
 });
