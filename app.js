@@ -136,3 +136,11 @@ app.get('/adminHome', (req, res) => {
 app.get('/driverActivity', (req, res) => {
     res.sendFile(path.join(__dirname, 'html/activity.html'));
 });
+
+app.get('/drivers', (req, res) => {
+    res.sendFile(path.join(__dirname, 'html/drivers.html'))
+});
+
+app.get('getDriverPage', (req, res) => {
+    res.sendFile(path.join(__dirname, 'html/driver_page'))
+});

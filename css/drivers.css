@@ -1,0 +1,21 @@
+.row {
+    margin-top: 30px;
+}
+
+.card:hover {
+    background-color: #F2F3F4;
+    color: #000;
+}
+
+.breaker {
+    margin-top: 2rem;
+}
+
+hr.dark-1 {
+    border-color: #000;
+}
+
+.breaker-horizontal {
+    display: inline;
+    margin-right: 15px;
+}

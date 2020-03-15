@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>
+        Drivers List
+    </title>
+    <link rel="stylesheet" type="text/css"
+          href="../bootstrap-4.4.1-dist/css/bootstrap.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="../css/drivers.css"/>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+        <a class="navbar-brand mr-auto order-1" href="#">Driver Drowsiness Detector</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+
+    <div class="mx-auto order-0">
+        <a class="mx-auto navbar-brand">Drivers List</a>
+    </div>
+
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/adminHome">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Drivers</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/driverActivity">Activity</a>
+            </li>
+        </ul>
+        <div class="breaker-horizontal"></div>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </div>
+</nav>
+
+<div class="breaker"></div>
+
+
+<!-- Content -->
+<div class="container">
+    <div class="row justify-content-lg-center">
+        <div class="justify-content-lg-center">
+            <h2>List of drivers</h2>
+            <hr class="dark-1">
+        </div>
+    </div>
+    <div id="driverList">
+
+    </div>
+</div>
+
+<button class="btn btn-info" id="add-drivers">Click this shit faggot</button>
+
+<script>
+    $(document).ready(function () {
+        let majorString = "";
+
+        fetch('/getEverything', {
+            method: "GET"
+        }).then((response) => {
+            response.json()
+                .then((list) => {
+                    let n = list.length;
+                    console.log(n);
+                    for (let i = 0; i < n; i += 2) {
+                        console.log(list[i].name);
+                        console.log(list[i + 1].name);
+                        majorString = majorString.concat(
+                            `
+                            <div class="row justify-content-lg-center">
+                                <div class="col col-lg-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <a href="/getDriverProfile?id=${list[i].name}"> Name : ${list[i].name} </a><br/>
+                                            Contact : ${list[i].contact} <br/>
+                                            Total Activities recorded = ${getCount(list[i].activity)}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-1">
+                                </div>
+
+                                <div class="col col-lg-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <a href="/getDriverProfile?id=${list[i + 1].name}"> Name : ${list[i + 1].name} </a><br/>
+                                            Contact : ${list[i + 1].contact} <br/>
+                                            Total Activities recorded = ${getCount(list[i + 1].activity)}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            `);
+                    }
+
+                    if (n % 2 === 0) {
+                        majorString = majorString.concat(
+                            `
+                                <div class="row justify-content-lg-center">
+                                    <div class="col col-lg-4">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <a href="/getDriverProfile?id=${list[n - 1].id}"> Name : ${list[n - 1].name} </a><br/>
+                                                Contact : ${list[n - 1].contact} <br/>
+                                                Total Activities recorded = ${getCount(list[n - 1].activity)}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-1">
+                                    </div>
+
+                                    <div class="col col-lg-4"></div>
+                                </div>
+                                `);
+                    }
+
+                    $('#driverList').append(majorString);
+                })
+        });
+
+        function getCount(list) {
+            console.log(list);
+            let count = 0;
+            list.forEach((item) => {
+                if (item.isDrowsy) {
+                    count++;
+                }
+            });
+            return count;
+        }
+    });
+</script>
+
+</body>
+</html>
