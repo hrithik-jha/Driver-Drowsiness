@@ -17,6 +17,9 @@ admin.initializeApp({
 });
 const db = admin.firestore();
 
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'html/login.html'));
+});
 
 // Connection to Firestore
 const port = process.env.PORT || 27017;

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>
+        Admin Login
+    </title>
+    <link rel="stylesheet" type="text/css"
+          href="../bootstrap-4.4.1-dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="../css/login.css"/>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+</head>
+<body>
+
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <div class="mx-auto" id="navHead">
+        <a class="navbar-brand">Driver Drowsiness Detector</a>
+    </div>
+</nav>
+
+<div class="breaker"></div>
+<div class="breaker"></div>
+<div class="breaker"></div>
+
+<div id="head" class="text-center">
+    <p class="display-6">Admin Login</p>
+</div>
+
+<div class="breaker"></div>
+<div class="breaker"></div>
+<div class="breaker"></div>
+
+<div class="container-fluid">
+    <div class="row justify-content-lg-center">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <form action="" id="form" method="post">
+                <div class="form-group">
+                    <label for="username"><b>Username</b></label>
+                    <input type="text" required class="form-control" id="username" aria-describedby="emailHelp">
+                </div>
+                <div class="form-group">
+                    <label for="password"><b>Password</b></label>
+                    <input type="password" required class="form-control" id="password">
+                </div>
+                <div class="breaker"></div>
+                <div class="breaker"></div>
+                <div class="breaker"></div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-dark" id="buttonLogin">Login</button>
+                </div>
+            </form>
+            <div class="breaker"></div>
+            <div class="breaker"></div>
+            <div class="breaker"></div>
+            <div class="text-center">
+                <a id="wrongCredentials" hidden style="color: red; font-family: 'Helvetica Neue', sans-serif">
+                    Wrong Credentials!!
+                </a>
+            </div>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(() => {
+        $('#form').submit((e) => {
+            e.preventDefault();
+            const username = $("#username").val();
+            const password = $("#password").val();
+            console.log(username);
+            console.log(password);
+
+            if (username === 'admin_01' && password === 'fuckTARP') {
+                window.location.href = '/adminHome';
+            } else {
+                window.alert("Wrong Credentials");
+            }
+        });
+    });
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+.display-6 {
+    font-size: 24px;
+    font-weight: bold;
+    font-family: "Helvetica Neue", sans-serif;
+}
+
+.breaker {
+    margin-top: 3rem;
+}
+
+.navbar-brand {
+    font-size: 32px;
+}
+
+#navHead {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+#buttonLogin {
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+
+input[type=text] {
+    border-width: 1px;
+    border-color: black;
+}
+
+input[type=password] {
+    border-width: 1px;
+    border-color: black;
+}
