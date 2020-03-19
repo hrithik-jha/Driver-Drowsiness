@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>
+        Driver Profile
+    </title>
+
+    <link rel="stylesheet" type="text/css" href="../bootstrap-4.4.1-dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../css/driver_page.css" />
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+        <a class="navbar-brand mr-auto order-1" href="#">Driver Drowsiness Detector</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+
+    <div class="mx-auto order-0">
+        <a class="mx-auto navbar-brand">Driver Profile</a>
+    </div>
+
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/adminHome">Home</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Drivers</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/driverActivity">Activity</a>
+            </li>
+        </ul>
+        <div class="breaker-horizontal"></div>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </div>
+</nav>
+
+<div class="breaker"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10">
+            <div class="text-center display-4" id="driver-name-here">
+                Hello
+            </div>
+
+            <div class="breaker"></div>
+            <div class="breaker"></div>
+            <div class="breaker"></div>
+            <div class="breaker"></div>
+
+            <div class="text-left" id="driver-details-here">
+                <p class="display-6" id="driver-id"></p>
+                <p class="display-6" id="driver-contact"></p>
+                <p class="display-6" id="driver-emergency-1"></p>
+                <p class="display-6" id="driver-emergency-2"></p>
+                <p class="display-6" id="driver-emergency-3"></p>
+            </div>
+
+            <div class="breaker"></div>
+
+            <h4>Activity</h4>
+            <div class="text-left" id="driver-activity">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="breaker"></div>
+<div class="breaker"></div>
+<div class="breaker"></div>
+
+<script>
+    $(document).ready(() => {
+        let userID;
+        fetch('/getIdInSession', {
+            method: "GET"
+        }).then((response) => {
+            response.json().then((data) => {
+                console.log(data);
+                userID = data;
+                fetch('/getProfileOf', {
+                    method: "POST",
+                    body: JSON.stringify({
+                        id: userID
+                    }),
+                    headers: {
+                        "Content-Type": "application/json; charset=utf-8"
+                    }
+                }).then((response) => {
+                    response.json().then((userItem) => {
+                        let i = 1;
+                        $("#driver-name-here").html(`<b>${userItem.name}</b>`);
+                        $("#driver-id").html(`ID: <b>${userItem.id}</b>`);
+                        $("#driver-contact").html(`Contact: <b>${userItem.contact}</b>`);
+                        $("#driver-emergency-1").html(`Emergency Contact 1: <b>${userItem.emergency1}</b>`);
+                        $("#driver-emergency-2").html(`Emergency Contact 2: <b>${userItem.emergency2}</b>`);
+                        $("#driver-emergency-3").html(`Emergency Contact 3: <b>${userItem.emergency3}</b>`);
+                        userItem.activity.forEach((item) => {
+                            $('#driver-activity').append(buildTemplate(item, i));
+                            i++;
+                        });
+                    });
+                });
+            })
+        });
+
+        function buildTemplate(userItem, i) {
+            let isDrowsy = "Not Detected";
+            let color = "green";
+            if (userItem.isDrowsy) {
+                isDrowsy = "Detected";
+                color = "red";
+            }
+            return `<div>
+                        <h6>Activity ${i}</h6>
+                        Timestamp: ${userItem.time} <br/>
+                        Drowsiness: <a style="color: ${color}">${isDrowsy}</a> <br/>
+                    </div>
+                    <hr>`;
+        }
+    });
+</script>
+
+</body>
+</html>

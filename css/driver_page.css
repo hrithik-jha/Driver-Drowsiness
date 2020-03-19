@@ -1,0 +1,20 @@
+.display-6 {
+    font-size: large;
+}
+
+.breaker-horizontal {
+    display: inline;
+    margin-right: 15px;
+}
+
+.breaker {
+    margin-top: 3rem;
+}
+
+#driver-activity {
+    padding-top: 0.5rem;
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+    border: 1px solid black;
+    border-radius: 5px;
+}

@@ -33,10 +33,10 @@
             <li class="nav-item">
                 <a class="nav-link" href="/adminHome">Home</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="#">Drivers</a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="/driverActivity">Activity</a>
             </li>
         </ul>
@@ -83,20 +83,19 @@
                                 <div class="col col-lg-4">
                                     <div class="card">
                                         <div class="card-body">
-                                            <a href="/getDriverProfile?id=${list[i].name}"> Name : ${list[i].name} </a><br/>
+                                            <a href="/getDriverProfile?id=${list[i].id}"> Name : ${list[i].name} </a><br/>
                                             Contact : ${list[i].contact} <br/>
                                             Total Activities recorded = ${getCount(list[i].activity)}
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="col-md-1">
-                                </div>
+                                <div class="col-md-1"></div>
 
                                 <div class="col col-lg-4">
                                     <div class="card">
                                         <div class="card-body">
-                                            <a href="/getDriverProfile?id=${list[i + 1].name}"> Name : ${list[i + 1].name} </a><br/>
+                                            <a href="/getDriverProfile?id=${list[i+1].id}"> Name : ${list[i + 1].name} </a><br/>
                                             Contact : ${list[i + 1].contact} <br/>
                                             Total Activities recorded = ${getCount(list[i + 1].activity)}
                                         </div>
@@ -113,7 +112,7 @@
                                     <div class="col col-lg-4">
                                         <div class="card">
                                             <div class="card-body">
-                                                <a href="/getDriverProfile?id=${list[n - 1].id}"> Name : ${list[n - 1].name} </a><br/>
+                                                <a href="/getDriverProfile?id=${list[n-1].id}"> Name : ${list[n - 1].name} </a><br/>
                                                 Contact : ${list[n - 1].contact} <br/>
                                                 Total Activities recorded = ${getCount(list[n - 1].activity)}
                                             </div>
@@ -144,6 +143,5 @@
         }
     });
 </script>
-
 </body>
 </html>

@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 const path = require('path');
 const collection = "driverDB";
+const sessionStorage = require('node-sessionstorage');
+let userID;
 
 app.use(express.static(path.join(__dirname, '')));
 
@@ -48,16 +50,16 @@ app.get('/getEverything', (req, res) => {
                 error: 1,
                 message: err
             })
-        })
+        });
 });
 
 // Get complete profile of one user
-app.get('/getProfileOf', (req, res) => {
+app.post('/getProfileOf', (req, res) => {
     const userID = req.body.id;
     db.collection(collection).doc(userID).get()
         .then((doc) => {
             res.json(doc.data());
-        })
+        });
 });
 
 // Get drowsiness of one user
@@ -66,7 +68,12 @@ app.get('/getDrowsyActivity', (req, res) => {
     db.collection(collection).doc(userID).get()
         .then((doc) => {
             res.json(doc.data().activity);
-        })
+        });
+});
+
+// Getting user id
+app.get('/getIdInSession', (req, res) => {
+    res.json(userID);
 });
 
 
@@ -99,7 +106,7 @@ app.post('/addNewDriver', (req, res) => {
         })
         .catch((err) => {
             console.log(err);
-        })
+        });
 });
 
 // Add a drowsiness activity
@@ -123,7 +130,7 @@ app.put('/addActivity', (req, res) => {
             res.json({
                 error: 1,
                 message: err
-            })
+            });
         })
 });
 
@@ -138,9 +145,12 @@ app.get('/driverActivity', (req, res) => {
 });
 
 app.get('/drivers', (req, res) => {
-    res.sendFile(path.join(__dirname, 'html/drivers.html'))
+    res.sendFile(path.join(__dirname, 'html/drivers.html'));
 });
 
-app.get('getDriverPage', (req, res) => {
-    res.sendFile(path.join(__dirname, 'html/driver_page'))
+app.get('/getDriverProfile', (req, res) => {
+    userID = req.query.id;
+    console.log(userID);
+    sessionStorage.setItem("userQueried", req.query.id);
+    res.sendFile(path.join(__dirname, 'html/driver_page.html'));
 });

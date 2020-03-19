@@ -27,6 +27,7 @@
     "express": "^4.17.1",
     "firebase-admin": "^8.9.2",
     "mongodb": "^3.5.3",
+    "node-sessionstorage": "^1.0.0",
     "path": "^0.12.7"
   }
 }
