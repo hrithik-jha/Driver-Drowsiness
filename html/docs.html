@@ -1,0 +1,29 @@
+<h1 class="code-line" data-line-start=0 data-line-end=1 ><a id="Driver_Drowsiness_Detector_0"></a>Driver Drowsiness Detector</h1>
+<p class="has-line-data" data-line-start="1" data-line-end="2">This repo contains the prototype of the admin page of a driver drowsiness detection software.</p>
+<h1 class="code-line" data-line-start=3 data-line-end=4 ><a id="API_Documentation_3"></a>API Documentation</h1>
+<h2 class="code-line" data-line-start=4 data-line-end=5 ><a id="GET_Methods_4"></a>GET Methods</h2>
+<ol>
+<li class="has-line-data" data-line-start="5" data-line-end="8">
+<p class="has-line-data" data-line-start="5" data-line-end="7"><code>/</code><br>
+Standard GET to check status of server.</p>
+</li>
+<li class="has-line-data" data-line-start="8" data-line-end="11">
+<p class="has-line-data" data-line-start="8" data-line-end="10"><code>/getEverything</code><br>
+Get complete profiles of all drivers.</p>
+</li>
+<li class="has-line-data" data-line-start="11" data-line-end="14">
+<p class="has-line-data" data-line-start="11" data-line-end="13"><code>/getProfileOf</code><br>
+Get complete profile of a single driver.</p>
+</li>
+</ol>
+<h2 class="code-line" data-line-start=14 data-line-end=15 ><a id="POST_Methods_14"></a>POST Methods</h2>
+<ol>
+<li class="has-line-data" data-line-start="15" data-line-end="17"><code>/addActivity</code><br>
+Send the activity of a certain driver. Follow the format:</li>
+</ol>
+<pre><code class="has-line-data" data-line-start="18" data-line-end="24">payload = {
+    &quot;id&quot; : id,
+    &quot;time&quot;: timestamp,
+    &quot;isDrowsy&quot;: isDrowsy
+  }
+</code></pre>
