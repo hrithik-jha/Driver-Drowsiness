@@ -21,6 +21,11 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'html/login.html'));
 });
 
+// Adding documentation endpoint
+app.get('/api-docs', (req, res) => {
+    res.sendFile(path.join(__dirname, 'html/docs.html'));
+});
+
 // Connection to Firestore
 const port = process.env.PORT || 27017;
 app.listen(port, () => {
