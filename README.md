@@ -1,7 +1,7 @@
 # Driver Drowsiness Detector
 This repo contains the prototype of the admin page of a driver drowsiness detection software.
 
-ML Server: https://github.com/hrithik-jha/drowsy-api
+**ML Server: https://github.com/hrithik-jha/drowsy-api**
 
 # API Documentation
 ## GET Methods
